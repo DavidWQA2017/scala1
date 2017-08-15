@@ -88,8 +88,11 @@ def exercise12(message1: String, message2: String,  amount: Int): Unit =
 {
   for (i <- 0 to amount)
   {
-
-    if ((i % 3 ) == 0 && i != 0)
+    if (i == 0)
+      println(i)
+    else if (((i % 3) == 0 )&& (i % 5) == 0)
+    println(message1.concat(message2))
+    else if ((i % 3 ) == 0 && i != 0)
       println(message1)
     else if((i % 5) == 0 && i != 0)
       println(message2)
@@ -116,23 +119,28 @@ exercise10Recursive("hi", 3)
 
 
 
+
+
 def exercise12Recursive(message1: String, message2: String,  amount: Int, i: Int): Unit =
 {
-  var i = i
-  if (amount > 0 )
+  if (amount >= 0 )
   {
-    if (((i % 3) == 0 )&& (i != 0))
+    if (i == 0)
+      println(i)
+    else if (((i % 3) == 0 )&& (i % 5) == 0)
+      println(message1.concat(message2))
+    else if (((i % 3) == 0 )&& (i != 0))
       println(message1)
     else if ((i % 5) == 0 && i != 0)
       println(message2)
     else
       println(i)
 
-    i = i + 1
-    exercise12Recursive(message1, message2, (amount -1), i)
+    exercise12Recursive(message1, message2, (amount -1), i + 1)
   }
-
 }
+
+
 var i = 0
 exercise12Recursive("Fizz", "Buzz" , 15, i)
 
@@ -153,4 +161,45 @@ def exercise11Recursive(message: String , amount: Int): Unit =
 
 }
 
-exercise11Recursive("h", 4)
+//exercise11Recursive("h", 4)
+
+
+def exercise8PatternMatch(number1: Int , number2: Int, switch: Boolean ): Int = (switch) match
+{
+  case true => exercise7(number1, number2)
+  case false => number1 * number2
+}
+
+exercise8PatternMatch(2, 3 , false)
+
+def exercise9PatternMatch(number1: Int , number2: Int, switch: Boolean ): Int = (number1 , number2) match
+{
+  case(number1 , number2)  if(number1 == 0 && number2 ==0) => 0
+  case(number1 , number2)  if(number1 == 0 || number2 == 0) => (number1 + number2)
+  case(number1, number2) => exercise8PatternMatch(number1, number2 ,switch )
+
+}
+
+exercise9PatternMatch(2 , 1 , false)
+
+
+def exercise12RecursivePatternMatch(message1: String, message2: String,  amount: Int, i: Int): Unit = (amount) match
+{
+  case (amount) if (i ==0 && amount > 0 ) => println(i); exercise12Recursive(message1, message2, (amount - 1), i + 1)
+  case (amount) if (((i % 3) == 0 )&& (i % 5) == 0 && amount > 0) => println(message1.concat(message2));  exercise12Recursive(message1, message2, (amount - 1), i + 1)
+  case (amount) if (((i % 3) == 0 )&& (i != 0) && amount > 0) => println(message1); exercise12Recursive(message1, message2, (amount - 1), i + 1)
+  case (amount) if ((i % 5) == 0 && i != 0 && amount > 0) => println(message2);  exercise12Recursive(message1, message2, (amount - 1), i + 1)
+  case (amount) if (amount > 0) => println(i);  exercise12Recursive(message1, message2, (amount - 1), i + 1)
+
+}
+
+i = 0
+exercise12RecursivePatternMatch("Fizz", "Buzz" , 15, i)
+
+
+def exercise13PatternMatch(input1: Int, input2: Int): Unit = (input1) match
+{
+  case input1: Int => var a = input1; var b = input2
+  case input1: Array[]
+
+}
