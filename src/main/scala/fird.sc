@@ -147,21 +147,18 @@ exercise12Recursive("Fizz", "Buzz" , 15, i)
 
 
 //not working
-def exercise11Recursive(message: String , amount: Int): Unit =
+def exercise11Recursive(message: String , amount: Int , counter: Int): Unit =
 {
-  var line = exercise11Recursive(message, amount - 1)
-  if(amount > 0)
+  if(counter > 0)
   {
-    line = line + message
-
+    exercise11Recursive(message, amount, counter - 1)
+    println(message * amount)
   }
-
-  println(line)
 
 
 }
 
-//exercise11Recursive("h", 4)
+exercise11Recursive("h", 4 , 4)
 
 
 def exercise8PatternMatch(number1: Int , number2: Int, switch: Boolean ): Int = (switch) match
@@ -197,9 +194,19 @@ i = 0
 exercise12RecursivePatternMatch("Fizz", "Buzz" , 15, i)
 
 
-def exercise13PatternMatch(input1: Int, input2: Int): Unit = (input1) match
+def exercise13PatternMatch(anything: Any): Unit = (anything) match
 {
-  case input1: Int => var a = input1; var b = input2
-  case input1: Array[]
-
+  //case input1: Int => var a =input2 ; var b = input1; println(a,b)
+  case Array(a @d, b @c) => println(c, d);
+  case List(a @d, b @c) => println(c, d);
 }
+val testPatternList: List[Int] = List (2,1)
+var testPatternArray: Array[Int] = Array(2, 1)
+
+exercise13PatternMatch(testPatternList)
+
+
+def exercise14Functional(): Array[String] = java.util.TimeZone.getAvailableIDs ().map (value => value.split("/")).flatten
+
+
+var functiontest: Array[String] = exercise14Functional()
