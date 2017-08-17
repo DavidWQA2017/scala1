@@ -7,6 +7,7 @@ object CipherMain extends App {
 
   var word: String = readLine()
   println(decode(word ,createAtBashCipher()))
+  println()
 
 
   def createAtBashCipher(): Map[Char, Char] = {
