@@ -1,0 +1,3 @@
+object HangMan extends App{
+
+}

@@ -6,8 +6,6 @@ import scala.io.StdIn.readLine
 
 object AdvAnagrams extends App
 {
-
-
   var rawInput: ArrayBuffer[String] = takeInput()
   var wordListMap: Map[String, String] = createWordListmap(sortwordList(generatewordList()), generatewordList())
   //println(wordListMap)
@@ -101,7 +99,6 @@ object AdvAnagrams extends App
     allAnagramLists
   }
 
-
   def createWordListmap(arrayBuffer: ArrayBuffer[String] , wordList: List[String]): Map[String , String] =
   {
     var wordListMap: Map[String, String] =  Map(1.toString -> 1.toString)
@@ -111,7 +108,6 @@ object AdvAnagrams extends App
     }
     wordListMap
   }
-
 
   def sortwordList(worldList: List[String]): ArrayBuffer[String] =
   {
@@ -159,5 +155,4 @@ object AdvAnagrams extends App
     //lines.foreach(item => println(item))
     lines
   }
-
 }
