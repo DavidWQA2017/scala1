@@ -97,7 +97,6 @@ object AdvAnagrams extends App
 
   def sortwordList(worldList: List[String]): ArrayBuffer[String] =
   {
-    //worldList.foreach(item => println(item))
     var sortingWordList: ArrayBuffer[String] = new ArrayBuffer[String]
     worldList.foreach(item => sortingWordList += sortString(item))
     sortingWordList
@@ -131,15 +130,12 @@ object AdvAnagrams extends App
   {
     var sortingWord: Array[Char] = input.toCharArray()
     util.Arrays.sort(sortingWord)
-    //println(sortingWord.mkString)
     sortingWord.mkString
   }
 
   def generatewordList(): List[String] =
   {
     Source.fromFile("C:\\Users\\Administrator\\IdeaProjects\\untitled\\src\\main\\Resources\\WordList.txt").getLines().toList
-    //lines.foreach(item => println(item))
-    // val lines
-    //lines
   }
+
 }

@@ -27,7 +27,7 @@ object LumberJack extends App
   currentPiles foreach{case a =>  a foreach{b => print(b.toString + " ")}; print('\n') }
 
 
-  def adjustLogPile(pileAmount: Array[Int] , currentPiles: Array[Array[Int]] , logAmount: Int): Array[Int] =
+  def adjustLogPile(pileAmount: Array[Int] , currentPiles: Array[Array[Int]] , logAmount: Int): Int =
   {
 
       var LogAmount = logAmount
