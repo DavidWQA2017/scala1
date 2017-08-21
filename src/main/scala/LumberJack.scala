@@ -16,17 +16,35 @@ object LumberJack extends App
     case firstAryElem =>  firstAryElem foreach{secondAryElem => print(secondAryElem.toString + " ")}
       print('\n')}
 
-  println("")
   var logAmount: Int = 7
+  println("")
 
-  while(logAmount > 0 )
-  {
-    pileAmount = adjustLogPile(pileAmount, genrateDisplay(currentPiles, pileAmount) , logAmount)
-  }
+  var samllestNum = findsmallestNum(currentPiles)
+
+
+    for (i <- 0 to pileAmount.size- 1)
+    {
+      logAmount = adjustLogPile(pileAmount , logAmount , findsmallestNum(currentPiles), i)
+      println(logAmount)
+    }
+
+
   currentPiles = genrateDisplay(currentPiles, pileAmount)
+
   currentPiles foreach{case a =>  a foreach{b => print(b.toString + " ")}; print('\n') }
 
+  def adjustLogPile(pileAmount: Array[Int], logAmount: Int , smallestNum: Int , i: Int): Int = {
+    var j:Int = logAmount
 
+    j match
+    {
+      case (logAmount) if (j > 0) && (pileAmount(i) == smallestNum)=> pileAmount(i) = pileAmount(i) + 1
+        j = j - 1
+        j
+      case _ => j
+    }
+  }
+  /*
   def adjustLogPile(pileAmount: Array[Int] , currentPiles: Array[Array[Int]] , logAmount: Int): Int =
   {
 
@@ -44,9 +62,9 @@ object LumberJack extends App
             print('\n')
           }
         }
-      pileAmount
+      logAmount
     }
-
+    */
 
   def findsmallestNum(currentPiles: Array[Array[Int]]): Int =
   {

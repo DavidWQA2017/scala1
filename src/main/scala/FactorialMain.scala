@@ -7,7 +7,6 @@ object FactorialMain extends App
 
 
 
-
   def takeInput(): String = {
     var input = readLine()
     input
