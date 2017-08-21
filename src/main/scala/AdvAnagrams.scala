@@ -8,10 +8,7 @@ object AdvAnagrams extends App
 {
   var rawInput: ArrayBuffer[String] = takeInput()
   var wordListMap: Map[String, String] = createWordListmap(sortwordList(generatewordList()), generatewordList())
-  //println(wordListMap)
-  //wordListMap.foreach(value => println(value))
 
-  //println(findMostAngarmsNum(createAnagramList(createSortedinput(rawInput), wordListMap) , rawInput))
   var mostAnagramList: ArrayBuffer[String] = (createListOfMostAnagram
   (
     createAnagramList(createSortedinput(rawInput), wordListMap)
@@ -19,48 +16,40 @@ object AdvAnagrams extends App
     , findMostAngarmsNum(createAnagramList(createSortedinput(rawInput), wordListMap) , rawInput)
   ))
 
-  //mostAnagramList.foreach(item => println(item))
   findlongestWord(mostAnagramList, findlongestWordNum(mostAnagramList))
 
-  //val mostAnagramList =
 
 
 
 
-  //def createAllAnagramLists(): List[List[String]]=
-  //{
-
-  //}
-
-  def findlongestWordNum(arrayBuffer: ArrayBuffer[String]):  Int =
+  def findlongestWordNum(foundAnagramWords: ArrayBuffer[String]):  Int =
   {
-    var longestWordNum = arrayBuffer(0).size
-    for (i <- 0 to arrayBuffer.size-1)
+    var longestWordNum = foundAnagramWords(0).size
+    for (i <- 0 to foundAnagramWords.size-1)
     {
-      if(longestWordNum < arrayBuffer(i).size)
+      if(longestWordNum < foundAnagramWords(i).size)
       {
-          longestWordNum = arrayBuffer(0).size
+          longestWordNum = foundAnagramWords(0).size
       }
     }
     longestWordNum
 
   }
 
-  def findlongestWord(arrayBuffer: ArrayBuffer[String] , longestWordNum: Int): Unit =
+  def findlongestWord(foundAnagramWords: ArrayBuffer[String] , longestWordNum: Int): Unit =
   {
-    arrayBuffer.foreach(item => if(item.size == longestWordNum) println("the word with the most letters and anagrams is " + item))
+    foundAnagramWords.foreach(item => if(item.size == longestWordNum) println("the word with the most letters and anagrams is " + item))
   }
 
-  def findMostAngarmsNum(arrayBuffer: ArrayBuffer[ArrayBuffer[String]] , wordList: ArrayBuffer[String]): Int=
+  def findMostAngarmsNum(anagramList: ArrayBuffer[ArrayBuffer[String]] , wordList: ArrayBuffer[String]): Int=
   {
-    var mostAnagramsAmount = arrayBuffer(0).size
-    //var mostAnagramsIndex = 0
-    for(i <- 0 to arrayBuffer.size - 1)
+    var mostAnagramsAmount = anagramList(0).size
+    for(i <- 0 to anagramList.size - 1)
     {
-      if (arrayBuffer(i).size > mostAnagramsAmount)
+      if (anagramList(i).size > mostAnagramsAmount)
       {
-          mostAnagramsAmount = arrayBuffer(i).size
-          //mostAnagramsIndex = i
+          mostAnagramsAmount = anagramList(i).size
+
       }
     }
     mostAnagramsAmount
@@ -78,16 +67,13 @@ object AdvAnagrams extends App
       }
     }
 
-    //println("have the most" + allWordsWithMostAnag)
     allWordsWithMostAnag
   }
 
-  def createAnagramList(inputList :ArrayBuffer[String], WordListMap:Map[String, String]): ArrayBuffer[ArrayBuffer[String]]  =
+  def createAnagramList(inputList :ArrayBuffer[String], wordListMap:Map[String, String]): ArrayBuffer[ArrayBuffer[String]]  =
   {
-    //println("i am here")
     var allAnagramLists: ArrayBuffer[ArrayBuffer[String]] = new ArrayBuffer[ArrayBuffer[String]]
-    //var l = ListBuffer[]
-    //wordListMap.values.foreach((value) =>  if(value == input) println( "and the value is" + value) else println(value) )
+
     for (i <- 0 to inputList.size - 1)
     {
       var anagramList: ArrayBuffer[String] = new ArrayBuffer[String]
@@ -95,16 +81,16 @@ object AdvAnagrams extends App
       wordListMap.values.foreach(value => if (value == input) wordListMap.keys.foreach(k => if (wordListMap.get(k).getOrElse("", "") == value) anagramList += k))
       allAnagramLists += anagramList.distinct
     }
-    //println(allAnagramLists)
+
     allAnagramLists
   }
 
-  def createWordListmap(arrayBuffer: ArrayBuffer[String] , wordList: List[String]): Map[String , String] =
+  def createWordListmap(sortedWordList: ArrayBuffer[String] , wordList: List[String]): Map[String , String] =
   {
     var wordListMap: Map[String, String] =  Map(1.toString -> 1.toString)
     for (i <- 0 to wordList.size - 1)
     {
-          wordListMap +=  ( (wordList(i))-> (arrayBuffer(i)))
+          wordListMap +=  ( (wordList(i))-> (sortedWordList(i)))
     }
     wordListMap
   }
@@ -151,8 +137,9 @@ object AdvAnagrams extends App
 
   def generatewordList(): List[String] =
   {
-    val lines = Source.fromFile("C:\\Users\\Administrator\\IdeaProjects\\untitled\\src\\main\\Resources\\WordList.txt").getLines().toList
+    Source.fromFile("C:\\Users\\Administrator\\IdeaProjects\\untitled\\src\\main\\Resources\\WordList.txt").getLines().toList
     //lines.foreach(item => println(item))
-    lines
+    // val lines
+    //lines
   }
 }

@@ -8,43 +8,42 @@ import scala.io.StdIn.readLine
 object LumberJack extends App
 {
 
-  //val grid = takeInput().toInt
-  //val logAmount = takeInput().toInt
-  //var currentPiles: Array[Int][Int] = { (0, 0 , 1) (0, 1 , 1) (0 , 0 , 1) }
   var currentPiles = Array.ofDim[Int](3, 3)
   var pileAmount: Array[Int] = Array(1, 2 ,3, 4 , 5 , 6 ,7 ,8 ,9 )
   currentPiles = genrateDisplay(currentPiles, pileAmount)
-  currentPiles foreach{case a =>  a foreach{b => print(b.toString + " ")}; print('\n') }
+
+  currentPiles foreach{
+    case firstAryElem =>  firstAryElem foreach{secondAryElem => print(secondAryElem.toString + " ")}
+      print('\n')}
+
   println("")
   var logAmount: Int = 7
 
-  pileAmount = adjustLogPile(pileAmount, genrateDisplay(currentPiles, pileAmount) , logAmount)
+  while(logAmount > 0 )
+  {
+    pileAmount = adjustLogPile(pileAmount, genrateDisplay(currentPiles, pileAmount) , logAmount)
+  }
   currentPiles = genrateDisplay(currentPiles, pileAmount)
-  pileAmount foreach( a => println(a))
   currentPiles foreach{case a =>  a foreach{b => print(b.toString + " ")}; print('\n') }
 
 
   def adjustLogPile(pileAmount: Array[Int] , currentPiles: Array[Array[Int]] , logAmount: Int): Array[Int] =
   {
 
-      var cLogAmount = logAmount
-      while (cLogAmount > 0)
-      {
-        for (i <- 0 to pileAmount.size - 1)
-        {
+      var LogAmount = logAmount
+        for (i <- 0 to pileAmount.size - 1) {
           var smallestNum = findsmallestNum(currentPiles)
-          if (pileAmount(i) == smallestNum)
-          {
+          if (pileAmount(i) == smallestNum) {
             pileAmount(i) = pileAmount(i) + 1
-            cLogAmount = cLogAmount - 1
-            println("the amount of logs is " + cLogAmount)
+            LogAmount = LogAmount - 1
+            println("the amount of logs is " + LogAmount)
             //check the adjustment for each iteration
             println("numbers found ")
             println(logAmount)
-            pileAmount foreach( a => print(a))
+            pileAmount foreach (a => print(a))
+            print('\n')
           }
         }
-      }
       pileAmount
     }
 
@@ -52,18 +51,14 @@ object LumberJack extends App
   def findsmallestNum(currentPiles: Array[Array[Int]]): Int =
   {
     var smallestNum = currentPiles(0)(0)
-    for (k <- 0 to currentPiles.size - 1 )
+    for (k <- 0 to currentPiles.size - 1 ; j <- 0 to currentPiles.size - 1 if(currentPiles(k)(j) < smallestNum ) )
     {
-      for (j <- 0 to currentPiles.size - 1)
-      {
-        if(currentPiles(k)(j) < smallestNum )
-        {
           smallestNum = currentPiles(k) (j)
-        }
-      }
     }
     smallestNum
   }
+
+
   def takeInput(): String =
   {
     var input = readLine()
@@ -72,13 +67,11 @@ object LumberJack extends App
 
   def genrateDisplay(currentPiles: Array[Array[Int]] , pileAmount: Array[Int]): Array[Array[Int]] =
   {
-    for (k <- 0 to currentPiles.size - 1 )
+    for (k <- 0 to currentPiles.size - 1; j <- 0 to currentPiles.size - 1)
     {
-      for (j <- 0 to currentPiles.size - 1)
-      {
         currentPiles(k)(j) = pileAmount((k * currentPiles.size) + j)
-      }
     }
+
     currentPiles
   }
 

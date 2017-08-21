@@ -37,34 +37,4 @@ object FactorialMain extends App
     result
 
   }
-    /*
-    for (i <- (1 to inputInt))
-    {
-      var remainder = inputInt % i
-      println(remainder)
-      if(remainder == 0)
-      {
-        inputInt = inputInt/i
-        println(inputInt)
-        counter = counter + 1
-      }
-      else
-      {
-        result = "NONE"
-      }
-    }
-
-    if (inputInt == 1)
-    {
-
-    }
-    else if (result == "NONE")
-    {
-      result = "NONE"
-    }
-    result
-  }
-  */
-
-
 }
