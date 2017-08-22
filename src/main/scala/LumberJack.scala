@@ -31,7 +31,9 @@ object LumberJack extends App
 
   currentPiles = genrateDisplay(currentPiles, pileAmount)
 
-  currentPiles foreach{case a =>  a foreach{b => print(b.toString + " ")}; print('\n') }
+  currentPiles foreach{
+    case firstAryElem =>  firstAryElem foreach{secondAryElem => print(secondAryElem.toString + " ")}
+      print('\n')}
 
   def adjustLogPile(pileAmount: Array[Int], logAmount: Int , smallestNum: Int , i: Int): Int = {
     var j:Int = logAmount
