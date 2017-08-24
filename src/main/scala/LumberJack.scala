@@ -17,16 +17,14 @@ object LumberJack extends App
       print('\n')}
 
   var logAmount: Int = 7
-  println("")
-
-  var samllestNum = findsmallestNum(currentPiles)
-
 
     for (i <- 0 to pileAmount.size- 1)
     {
       logAmount = adjustLogPile(pileAmount , logAmount , findsmallestNum(currentPiles), i)
       println(logAmount)
     }
+
+
 
 
   currentPiles = genrateDisplay(currentPiles, pileAmount)

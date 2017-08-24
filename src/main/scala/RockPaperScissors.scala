@@ -13,15 +13,12 @@ object RockPaperScissors extends App {
   var paperWeight = 0
   val weightGroupsSizeO  = createGroupSizeForWeights
   var winning: Int = 0
-  var totalNumberOfAI = 100
+  var totalNumberOfAI = 50
   println("please enter the mode you wish to enter" )
   var playMode = takeInput().toInt
 
-  if (playMode  == 1)
-    runAIVSPlayer(totalGames)
-    else if(playMode == 2)
-    runAIVSAI(totalGames)
-    else if(playMode == 3)
+    runAIVSPlayerOrAIVSAI (totalGames)
+    if(playMode == 3)
     runLotsOfAI()
 
 
@@ -78,28 +75,24 @@ object RockPaperScissors extends App {
      else println("neither player lost or won")
   }
 
-  def runAIVSAI(totalGames: Int) =
+  def chooseInput(): String =
   {
-    var totalGamesInFunction = totalGames
-    while (totalGamesInFunction > 0)
-    {
-      var moveAI = commitAImove(generateAIMove(), scissorsWeight, rockWeight, paperWeight ,weightGroupsSizeO )
-      var movePlayer = commitAImove(generateAIMove(), scissorsWeight, rockWeight, paperWeight, weightGroupsSizeO )
-      weightAdjustmentCheck(movePlayer)
-      println(determineWinner(moveAI, movePlayer ))
-      println("genrated Ai move " + moveAI)
-      totalGamesInFunction -= 1
-    }
-    determineOveralWinner()
+    if (playMode == 1)
+      takeInput()
+    else if (playMode == 2)
+      commitAImove(generateAIMove(), scissorsWeight, rockWeight, paperWeight, weightGroupsSizeO)
+    else
+      "rock"
   }
 
-  def runAIVSPlayer (totalGames: Int) =
+  def runAIVSPlayerOrAIVSAI (totalGames: Int) =
   {
     var totalGamesInFunction = totalGames
     while (totalGamesInFunction > 0)
     {
       var moveAI = commitAImove(generateAIMove(), scissorsWeight, rockWeight, paperWeight , weightGroupsSizeO)
-      var movePlayer = takeInput()
+      var movePlayer = chooseInput()
+      println(movePlayer)
       weightAdjustmentCheck(movePlayer)
       println(determineWinner(moveAI, movePlayer))
       println("genrated Ai move " + moveAI)
