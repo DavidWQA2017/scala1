@@ -5,22 +5,14 @@ object Keyboardbroken {
   def main(args: Array[String]): Unit =
   {
     val dictionary = generateDictionary()
-    //dictionary.foreach(item => println(item))
-
-    //var amount: Int= readLine().toInt
+    
     val keyInputList: List[String] = List("abcd" )
     println(keyInputList)
-    var word1: Array[String] = genrateWordslist(dictionary ,keyInputList)
-    var longestword: String = findbiggestWord(word1)
+    val word1: Array[String] = genrateWordslist(dictionary ,keyInputList)
+    val longestword: String = findbiggestWord(word1)
     println(longestword)
 
   }
-
-//
-  //
-//  val filename = "Dictionary.scala"
-//  amount = 3
-
 
   def genrateWordslist(dictionary :List[String], keyInputList :List[String]): Array[String]=
   {
@@ -51,11 +43,10 @@ object Keyboardbroken {
     if (tNum == currentWord.toCharArray.size)
     {
        word1.update(cWordFound, currentWord)
-      cWordFound = cWordFound + 1
-      println("found one")
+       cWordFound = cWordFound + 1
+       println("found one")
     }
         println(cWordFound)
-    //println(word1(2))
       }
 
     word1
@@ -85,17 +76,4 @@ object Keyboardbroken {
     }
     longestWord
   }
-
-// def createAvailableKeylistConsole(amount: Int): List[String] =
-// {
-
- //  for (i <- 0 to (amount))
-  // {
-   //   var newKeyInput = readLine()
-  //    val keyInputList :+ newKeyInput
- //  }
-  // keyInputList
-// }
-
-
 }
