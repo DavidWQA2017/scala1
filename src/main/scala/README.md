@@ -5,7 +5,7 @@
 AdvAnagrams| Finished | taking the users input the program tells the user the word with the most anagrams
 AdvCommonSubSq| in progress | find the largest common subsequence in two strings
 advPrimeNum| finished |find prime numbers from 1 million to 3million in under 2minutes
-advPrimeNum2| in progress |find prime numbers from 1 billion to billion in under 3minutes
+advPrimeNum2| in progress |find prime numbers from 1 billion to 2billion in under 3minutes
 AdvStringManipulation| in progess | turns one string into another
 ArrayDuplicates| finished| finds duplicates within an array
 KeyboardBroken | finished | imagining that a users keyboard is broken except specfic keys , creates the longest english word possible
