@@ -19,27 +19,9 @@ def productOf(n: Int, amount: Int): Int =
 
 var productNumber = productOf(5, 1)
 
-/*
-def numberOfZeros(n: String, amount: Int , counter: Int): Int =
-{
-  var number = n.toCharArray.head.toInt
-  (counter)match
-  {
-    case 0 => amount + 0
-    case (counter)  if(number == 0) =>
-      var newN: String = n.stripPrefix(n.toCharArray.head.toString)
-      numberOfZeros(newN , amount + 1, counter - 1)
-    case (counter) =>
-      var newN: String = n.stripPrefix(n.toCharArray.head.toString)
-      numberOfZeros(newN , amount, counter - 1)
-  }
-}
-*/
-
 var n = "100"
 n = n.stripPrefix(n.toCharArray.head.toString)
 var input: String = "100"
-//var numberOfZeros = numberOfZeros(input,0 , input.size)
 
 
 def findMinimum(arrayBuffer: ArrayBuffer[Int], counter: Int,  minimum: Int): Unit = (counter) match
@@ -93,17 +75,8 @@ digitsIArrayBuff
 digitsIArray.foreach(item => digitsIArrayBuff += item)
 
 
-
 sumAllDigitsExample1(digitsIArrayBuff, digitsIArray.size, 0)
 
 
-/*
-def sumAllDigits(n: Int): Int = (n) match
-{
-  case 0 =>
-  case (n) if (n > 0) =>
-  case (n) if()
-}
-*/
 
 
