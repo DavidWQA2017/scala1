@@ -14,7 +14,7 @@ object FactorialMain extends App
 
   def findFactorial(input: String ): String =
   {
-    var inputInt: Double = input.toInt
+    val inputInt: Double = input.toInt
     println(inputInt)
     var counter = 1
     var result = ""
