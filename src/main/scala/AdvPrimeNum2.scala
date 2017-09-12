@@ -4,9 +4,9 @@ object AdvPrimeNum2 extends App
 {
   val minNumb: Int = 0
   val maxNumb: Int = 50000000
-  var startTime = System.currentTimeMillis()
-  var allNumbers = generateNonPrimeNumbers(maxNumb, minNumb)
-  var endTime = System.currentTimeMillis()
+  val startTime = System.currentTimeMillis()
+  val allNumbers = generateNonPrimeNumbers(maxNumb, minNumb)
+  val endTime = System.currentTimeMillis()
   var duration = (endTime - startTime)
   //allNumbers.values.foreach(item => println(item))
   println("the amount of prime numbers are: " + calculateAmountofPrimes(allNumbers))
